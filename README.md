@@ -64,3 +64,169 @@ ngrok tcp 5000
 This information is provided strictly for ethical hacking, cybersecurity education, and defensive research. Unauthorized use of these techniques is illegal and unethical. Always have permission before performing any security testing.
 
 If you want more details (e.g., attacker client code, or more features), let me know!
+
+Here’s a complete README.md file for your project Malware-tool-capabilities-using-Python-and-ngrok, including explanations for the libraries used, project overview, usage instructions, and disclaimer.
+
+⸻
+
+Here’s an updated, full README.md that includes:
+	•	📊 Architecture diagram
+	•	⚙️ CI/CD integration using GitHub Actions
+	•	📦 Instructions to build and run a .pyz executable package
+
+⸻
+
+
+# 🛠️ Malware Tool Capabilities Using Python and Ngrok
+
+This project demonstrates how a Python-based tool can simulate capabilities often used in penetration testing or malware analysis, including system reconnaissance, persistence techniques, and reverse shell access via **Ngrok**.
+
+> ⚠️ **DISCLAIMER:** This tool is for **educational and research purposes only**. Unauthorized use on devices/networks is **strictly prohibited** and may violate local or international laws.
+
+---
+
+## 📂 Project Overview
+
+- Collects user, system, and network data
+- Creates a tunnel with [Ngrok](https://ngrok.com/) to allow reverse shell communication
+- Supports remote command execution
+- Demonstrates basic persistence via system startup mechanisms
+
+---
+
+## 🧩 Libraries Used
+
+| Library      | Description |
+|--------------|-------------|
+| `os`         | OS operations like environment access, file handling, and shell command execution |
+| `pwd`        | Retrieves Unix system user information |
+| `socket`     | Gets IP addresses, hostname, and manages network communication |
+| `subprocess` | Runs external shell commands (e.g., reverse shell execution) |
+| `json`       | Serializes data for output or transmission |
+
+---
+
+## 🖼️ Architecture Diagram
+
+```mermaid
+graph TD
+  A[Target System] --> B[Run Python Tool]
+  B --> C[Collect System Info]
+  B --> D[Setup Reverse Shell]
+  D --> E[Ngrok Tunnel]
+  E --> F[Attacker Listener]
+  F --> G[Command & Control Channel]
+
+
+⸻
+
+⚙️ Getting Started
+
+Prerequisites
+	•	Python 3.8+
+	•	Ngrok
+	•	Linux/macOS system (for full support)
+
+Clone & Run
+
+git clone https://github.com/DanielVihorev/Malware-tool-capabilities-using-Python-and-ngrok
+cd Malware-tool-capabilities-using-Python-and-ngrok
+python3 tool.py
+
+
+⸻
+
+🧪 Testing Instructions
+	1.	Start Ngrok:
+
+ngrok tcp 4444
+
+
+	2.	Update tool.py with your Ngrok TCP address and port.
+	3.	Run a listener on your attacker machine:
+
+nc -lvnp 4444
+
+
+	4.	Execute the tool:
+
+python3 tool.py
+
+
+
+⸻
+
+🔁 CI/CD Integration
+
+A GitHub Actions workflow is provided to automate testing and packaging:
+
+# .github/workflows/python-ci.yml
+name: Python CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt || echo "No dependencies"
+
+    - name: Run Basic Checks
+      run: |
+        python3 -m py_compile tool.py
+
+
+⸻
+
+📦 Build as .pyz Executable
+
+Turn the project into a standalone .pyz archive using zipapp:
+
+Step 1: Ensure the script is modular
+
+Rename tool.py to __main__.py and place it inside a folder:
+
+MalwareTool/
+├── __main__.py
+
+Step 2: Package it
+
+python3 -m zipapp MalwareTool -p "/usr/bin/env python3" -o malwaretool.pyz
+
+Step 3: Run it
+
+./malwaretool.pyz
+
+
+⸻
+
+🧼 Clean Up
+
+To safely test or uninstall:
+
+rm -rf ~/.ngrok2
+killall ngrok python3
+
+
+⸻
+
+👤 Author
+
+Daniel Vihorev
+🔗 GitHub
+
+⸻
+
+⚠️ Legal & Ethical Notice
+
+This repository is intended only for ethical hacking, educational, and red team research purposes. Do not use this code against any system or network without full legal authorization.
