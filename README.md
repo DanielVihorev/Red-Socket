@@ -40,9 +40,9 @@ import json
 ## 4. **Exposing with ngrok**
 
 After running the malware server on the victim machine:
-```bash
+
 ngrok tcp 5000
-```
+
 - ngrok will give a public TCP address, e.g., `tcp://1.tcp.ngrok.io:12345`
 - The attacker can connect to this address using a TCP client.
 
@@ -67,15 +67,7 @@ If you want more details (e.g., attacker client code, or more features), let me 
 
 Here’s a complete README.md file for your project Malware-tool-capabilities-using-Python-and-ngrok, including explanations for the libraries used, project overview, usage instructions, and disclaimer.
 
-⸻
-
-Here’s an updated, full README.md that includes:
-	•	📊 Architecture diagram
-	•	⚙️ CI/CD integration using GitHub Actions
-	•	📦 Instructions to build and run a .pyz executable package
-
-⸻
-
+---
 
 # 🛠️ Malware Tool Capabilities Using Python and Ngrok
 
