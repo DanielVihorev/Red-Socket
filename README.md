@@ -108,8 +108,6 @@ This project demonstrates how a Python-based tool can simulate capabilities ofte
 
 ## 🖼️ Architecture Diagram
 
-```mermaid
-graph TD
   A[Target System] --> B[Run Python Tool]
   B --> C[Collect System Info]
   B --> D[Setup Reverse Shell]
